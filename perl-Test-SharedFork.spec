@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-SharedFork
 Version  : 0.35
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-sharedfork-perl/libtest-sharedfork-perl_0.35-1.debian.tar.xz
@@ -83,10 +83,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Test/SharedFork.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Test/SharedFork/Array.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Test/SharedFork/Scalar.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Test/SharedFork/Store.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork/Array.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork/Scalar.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork/Store.pm
 
 %files dev
 %defattr(-,root,root,-)
