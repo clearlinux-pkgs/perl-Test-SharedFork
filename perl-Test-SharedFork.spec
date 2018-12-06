@@ -83,10 +83,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork/Array.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork/Scalar.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Test/SharedFork/Store.pm
+/usr/lib/perl5/vendor_perl/5.28.1Test/SharedFork.pm
+/usr/lib/perl5/vendor_perl/5.28.1Test/SharedFork/Array.pm
+/usr/lib/perl5/vendor_perl/5.28.1Test/SharedFork/Scalar.pm
+/usr/lib/perl5/vendor_perl/5.28.1Test/SharedFork/Store.pm
 
 %files dev
 %defattr(-,root,root,-)
