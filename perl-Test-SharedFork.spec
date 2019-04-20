@@ -11,6 +11,7 @@ Source1  : http://http.debian.net/debian/pool/main/libt/libtest-sharedfork-perl/
 Summary  : fork test
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0 GPL-2.0
+Requires: perl-Test-SharedFork-license = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::Requires)
 
@@ -20,6 +21,24 @@ Test::SharedFork - fork test
 # SYNOPSIS
 use Test::More tests => 200;
 use Test::SharedFork;
+
+%package dev
+Summary: dev components for the perl-Test-SharedFork package.
+Group: Development
+Provides: perl-Test-SharedFork-devel = %{version}-%{release}
+Requires: perl-Test-SharedFork = %{version}-%{release}
+
+%description dev
+dev components for the perl-Test-SharedFork package.
+
+
+%package license
+Summary: license components for the perl-Test-SharedFork package.
+Group: Default
+
+%description license
+license components for the perl-Test-SharedFork package.
+
 
 %prep
 %setup -q -n Test-SharedFork-0.35
@@ -65,3 +84,16 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork/Array.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork/Scalar.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork/Store.pm
+
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Test::SharedFork.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Test-SharedFork/LICENSE
+/usr/share/package-licenses/perl-Test-SharedFork/deblicense_copyright
