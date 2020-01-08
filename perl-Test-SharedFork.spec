@@ -4,14 +4,15 @@
 #
 Name     : perl-Test-SharedFork
 Version  : 0.35
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-sharedfork-perl/libtest-sharedfork-perl_0.35-1.debian.tar.xz
-Summary  : fork test
+Summary  : 'fork test'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0 GPL-2.0
 Requires: perl-Test-SharedFork-license = %{version}-%{release}
+Requires: perl-Test-SharedFork-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::Requires)
 
@@ -40,18 +41,28 @@ Group: Default
 license components for the perl-Test-SharedFork package.
 
 
+%package perl
+Summary: perl components for the perl-Test-SharedFork package.
+Group: Default
+Requires: perl-Test-SharedFork = %{version}-%{release}
+
+%description perl
+perl components for the perl-Test-SharedFork package.
+
+
 %prep
 %setup -q -n Test-SharedFork-0.35
-cd ..
-%setup -q -T -D -n Test-SharedFork-0.35 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libtest-sharedfork-perl_0.35-1.debian.tar.xz
+cd %{_builddir}/Test-SharedFork-0.35
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-SharedFork-0.35/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Test-SharedFork-0.35/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -61,7 +72,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -70,8 +81,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/deblicense_copyright
+cp %{_builddir}/Test-SharedFork-0.35/LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/3a84f6bb22b54002f3b855ed4048b5449ed4687a
+cp %{_builddir}/Test-SharedFork-0.35/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/7843f1da36a2b091d7144b3a52f4d6799fa166ab
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -84,10 +95,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork/Array.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork/Scalar.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/SharedFork/Store.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -95,5 +102,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Test-SharedFork/LICENSE
-/usr/share/package-licenses/perl-Test-SharedFork/deblicense_copyright
+/usr/share/package-licenses/perl-Test-SharedFork/3a84f6bb22b54002f3b855ed4048b5449ed4687a
+/usr/share/package-licenses/perl-Test-SharedFork/7843f1da36a2b091d7144b3a52f4d6799fa166ab
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork/Array.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork/Scalar.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork/Store.pm
