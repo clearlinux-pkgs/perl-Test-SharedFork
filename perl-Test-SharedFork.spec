@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-SharedFork
 Version  : 0.35
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-sharedfork-perl/libtest-sharedfork-perl_0.35-1.debian.tar.xz
@@ -82,7 +82,7 @@ make TEST_VERBOSE=1 test
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork
 cp %{_builddir}/Test-SharedFork-0.35/LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/3a84f6bb22b54002f3b855ed4048b5449ed4687a
-cp %{_builddir}/Test-SharedFork-0.35/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/7843f1da36a2b091d7144b3a52f4d6799fa166ab
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Test-SharedFork/7843f1da36a2b091d7144b3a52f4d6799fa166ab
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -107,7 +107,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork/Array.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork/Scalar.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Test/SharedFork/Store.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/SharedFork.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/SharedFork/Array.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/SharedFork/Scalar.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/SharedFork/Store.pm
