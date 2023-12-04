@@ -5,7 +5,7 @@
 #
 Name     : perl-Test-SharedFork
 Version  : 0.35
-Release  : 21
+Release  : 22
 URL      : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-sharedfork-perl/libtest-sharedfork-perl_0.35-1.debian.tar.xz
